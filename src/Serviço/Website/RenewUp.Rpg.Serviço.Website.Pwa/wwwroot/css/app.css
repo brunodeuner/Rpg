@@ -1,6 +1,65 @@
-﻿html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+:root {
+    --margem-padrão: 1rem;
+    --cor-de-fundo: #f7f7f7;
+}
+
+.ModoDeCor-Escuro {
+    --cor-de-fundo: #212529;
+    --cor-do-corpo: #899095;
+    --cor-de-link: #dee2e6;
+    --cor-de-link-hover: #3cc368;
+}
+
+* {
+    max-height: 100%;
+    max-width: 100%;
     margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-family: "Poppins", sans-serif;
+}
+
+.iframe {
+    width: calc(100% + 2 * var(--margem-padrão));
+    height: calc(100% + 2 * var(--margem-padrão));
+    margin: calc(-1 * var(--margem-padrão));
+}
+
+.base-do-sistema {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    max-width: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    grid-template-columns: 250px auto;
+    grid-template-rows: 56px auto;
+    grid-template-areas:
+        "s h"
+        "s m"
+        "s m";
+}
+
+.header {
+    padding: var(--margem-padrão);
+    grid-area: h;
+}
+
+.sidebar {
+    grid-area: s;
+}
+
+.main-content {
+    padding: var(--margem-padrão);
+    grid-area: m;
+}
+
+a, .btn-link {
+    color: #0366d6;
 }
 
 a, .btn-link {

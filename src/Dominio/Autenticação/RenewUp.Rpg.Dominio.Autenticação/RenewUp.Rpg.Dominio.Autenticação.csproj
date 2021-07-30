@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="SkyInfo.Core.Dominio" Version="0.2.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj" />
+  </ItemGroup>
+
+</Project>

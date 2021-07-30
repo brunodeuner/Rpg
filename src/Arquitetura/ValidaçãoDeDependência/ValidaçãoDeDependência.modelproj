@@ -34,6 +34,10 @@
     </Validate>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Dominio\Autenticação\RenewUp.Rpg.Dominio.Autenticação\RenewUp.Rpg.Dominio.Autenticação.csproj">
+      <Name>RenewUp.Rpg.Dominio.Autenticação</Name>
+      <Project>{b42ae422-088f-405f-ba33-8fcd48e66947}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj">
       <Name>RenewUp.Rpg.Dominio</Name>
       <Project>{4c6993ee-5219-4c28-b42c-2d319aa194e4}</Project>

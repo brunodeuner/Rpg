@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31410.357
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31521.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serviço", "Serviço", "{7D1CDF8C-FE01-46D0-B724-6CE024816EB9}"
 EndProject
@@ -30,6 +30,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Dominio", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Serviço.Blazor", "src\Serviço\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj", "{B856D233-C8C5-4797-B366-A7FE0898E5ED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autenticação", "Autenticação", "{B8EFED61-7984-44B5-8CC3-6275B26A2966}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Dominio.Autenticação", "src\Dominio\Autenticação\RenewUp.Rpg.Dominio.Autenticação\RenewUp.Rpg.Dominio.Autenticação.csproj", "{B42AE422-088F-405F-BA33-8FCD48E66947}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +56,10 @@ Global
 		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42AE422-088F-405F-BA33-8FCD48E66947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42AE422-088F-405F-BA33-8FCD48E66947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42AE422-088F-405F-BA33-8FCD48E66947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42AE422-088F-405F-BA33-8FCD48E66947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,8 @@ Global
 		{C9521C33-F0D1-4CA7-B873-4E16191E1677} = {A130E1D1-3B2B-4573-ACBA-CAD8DD3DB6DD}
 		{4C6993EE-5219-4C28-B42C-2D319AA194E4} = {4D456151-045F-4470-8F5B-CA56F3C96529}
 		{B856D233-C8C5-4797-B366-A7FE0898E5ED} = {30765860-D492-4808-BEDD-7378B4BF417D}
+		{B8EFED61-7984-44B5-8CC3-6275B26A2966} = {4D456151-045F-4470-8F5B-CA56F3C96529}
+		{B42AE422-088F-405F-BA33-8FCD48E66947} = {B8EFED61-7984-44B5-8CC3-6275B26A2966}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4849B9DE-4833-435E-ACE2-584502FCA308}
