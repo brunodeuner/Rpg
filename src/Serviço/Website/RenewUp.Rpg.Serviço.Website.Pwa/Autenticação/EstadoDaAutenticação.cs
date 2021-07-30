@@ -9,7 +9,7 @@ using RenewUp.Rpg.Dominio.Dtos;
 
 namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 {
-    public class EstadoDaAutenticação : AuthenticationStateProvider
+    public sealed class EstadoDaAutenticação : AuthenticationStateProvider
     {
         private readonly IContextoDaRequisição contextoDaRequisição;
 

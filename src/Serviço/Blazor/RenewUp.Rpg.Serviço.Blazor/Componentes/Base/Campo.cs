@@ -6,7 +6,7 @@ using RenewUp.Rpg.Dominio.Enumerados;
 
 namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
 {
-    public class Campo
+    public sealed class Campo
     {
         private object valor;
 
@@ -24,14 +24,15 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
             Desabilitado = atributoDeExibição?.PermissaoCrud.HasFlag(PermissaoCrud.AdicionarAtualizar) ?? false;
         }
 
-        public string Id { get; private set; }
-        public object Objeto { get; private set; }
-        public string Descrição { get; private set; }
-        public PropertyInfo Propriedade { get; private set; }
-        public Type Tipo { get; private set; }
+        public string Id { get; init; }
+        public object Objeto { get; init; }
+        public string Descrição { get; init; }
+        public PropertyInfo Propriedade { get; init; }
+        public Type Tipo { get; init; }
         public object Valor
         {
-            get => valor; private set
+            get => valor;
+            private set
             {
                 valor = value;
                 Propriedade.SetValue(Objeto, value);
@@ -41,8 +42,8 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
                 });
             }
         }
-        public Action<ChangeEventArgs> OnChange { get; private set; }
-        public bool Desabilitado { get; private set; }
+        public Action<ChangeEventArgs> OnChange { get; init; }
+        public bool Desabilitado { get; init; }
         public string ValorEmTexto { get => ObterValor<string>(); set => DefinirValor(value); }
         public bool ValorEmBoolean { get => ObterValor<bool>(); set => DefinirValor(value); }
 

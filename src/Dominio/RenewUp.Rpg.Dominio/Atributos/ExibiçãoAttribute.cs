@@ -14,7 +14,7 @@ namespace RenewUp.Rpg.Dominio.Atributos
             PermissaoCrud = permissaoCrud;
         }
 
-        public string Descrição { get; private set; }
-        public PermissaoCrud PermissaoCrud { get; private set; }
+        public string Descrição { get; init; }
+        public PermissaoCrud PermissaoCrud { get; init; }
     }
 }

@@ -8,6 +8,6 @@ namespace RenewUp.Rpg.Dominio.Autenticação.Eventos
         public EventoDeUsuarioAutenticadoComSucesso(ClaimsPrincipal claimsPrincipal) =>
             ClaimsPrincipal = claimsPrincipal;
 
-        public ClaimsPrincipal ClaimsPrincipal { get; private set; }
+        public ClaimsPrincipal ClaimsPrincipal { get; init; }
     }
 }

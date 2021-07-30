@@ -31,18 +31,18 @@
 
     private void OnChange(ChangeEventArgs e) => StateHasChanged();
 
-    private static PropertyInfo ObterPropriedade(Expression<Func<TModelo, object>> expression)
+    private static PropertyInfo ObterPropriedade(Expression<Func<TModelo, object>> expressão)
     {
-        switch (expression?.Body)
+        switch (expressão?.Body)
         {
             case null:
-                throw new ArgumentNullException(nameof(expression));
-            case UnaryExpression unaryExp when unaryExp.Operand is MemberExpression memberExp:
-                return (PropertyInfo)memberExp.Member;
-            case MemberExpression memberExp:
-                return (PropertyInfo)memberExp.Member;
+                throw new ArgumentNullException(nameof(expressão));
+            case UnaryExpression unaryExp when unaryExp.Operand is MemberExpression memberExpression:
+                return (PropertyInfo)memberExpression.Member;
+            case MemberExpression memberExpression:
+                return (PropertyInfo)memberExpression.Member;
             default:
-                throw new ArgumentException($"Não foi possível obter a propriedade a partir da expressão: {expression}");
+                throw new ArgumentException($"Não foi possível obter a propriedade a partir da expressão: {expressão}");
         }
     }
 }
