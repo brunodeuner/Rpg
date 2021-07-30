@@ -31,6 +31,8 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
         public Type Tipo { get; init; }
         public Action<ChangeEventArgs> OnChange { get; init; }
         public bool Desabilitado { get; init; }
+        public string ValorEmTexto { get => ObterValor<string>(); set => DefinirValor(value); }
+        public bool ValorEmBoolean { get => ObterValor<bool>(); set => DefinirValor(value); }
         public object Valor
         {
             get => valor;
@@ -44,8 +46,6 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
                 });
             }
         }
-        public string ValorEmTexto { get => ObterValor<string>(); set => DefinirValor(value); }
-        public bool ValorEmBoolean { get => ObterValor<bool>(); set => DefinirValor(value); }
 
         private T ObterValor<T>() => (T)Valor;
         private void DefinirValor<T>(T valor) => Valor = valor;
