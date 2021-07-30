@@ -43,7 +43,7 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 
         private void DefinirContextoDaRequisiçãoAPartirDoClaims(ClaimsIdentity claimsIdentity) =>
             contextoDaRequisição.DefinirContexto(new UsuarioId(claimsIdentity?.Claims
-                    .Where(claim => claim.Type.Equals(TokenClaims.UsuarioId(), StringComparison.OrdinalIgnoreCase))
+                    .Where(claim => claim.Type.Equals(ClaimsDoToken.UsuarioId(), StringComparison.OrdinalIgnoreCase))
                     .Select(claim => claim.Value)
                     .FirstOrDefault()));
     }

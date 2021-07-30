@@ -2,7 +2,6 @@
 
 namespace RenewUp.Rpg.Dominio.Enumerados
 {
-
     [Flags]
     public enum PermissaoCrud
     {
