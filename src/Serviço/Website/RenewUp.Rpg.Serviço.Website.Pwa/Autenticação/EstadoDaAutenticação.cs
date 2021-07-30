@@ -4,21 +4,21 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
 using RenewUp.Rpg.Dominio.Autenticação.Token;
+using RenewUp.Rpg.Dominio.ContextoDaRequisição;
 using RenewUp.Rpg.Dominio.Dtos;
-using RenewUp.Rpg.Dominio.RequisiçãoContexto;
 
 namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 {
     public class EstadoDaAutenticação : AuthenticationStateProvider
     {
-        private readonly IRequisiçãoContexto requisiçãoContexto;
+        private readonly IContextoDaRequisição contextoDaRequisição;
 
-        public EstadoDaAutenticação(IRequisiçãoContexto requisiçãoContexto) =>
-            this.requisiçãoContexto = requisiçãoContexto;
+        public EstadoDaAutenticação(IContextoDaRequisição contextoDaRequisição) =>
+            this.contextoDaRequisição = contextoDaRequisição;
 
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            if (requisiçãoContexto?.Usuario?.Id is null)
+            if (contextoDaRequisição?.Usuario?.Id is null)
                 return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
 
             var claim = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, "Nome") }, "Token");
@@ -28,25 +28,23 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 
         public Task Deslogar()
         {
-            requisiçãoContexto.Usuario = default;
+            contextoDaRequisição.LimparContexto();
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
             return Task.CompletedTask;
         }
 
         public Task DefinirComoAutenticado(ClaimsPrincipal claimsPrincipal)
         {
-            DefinirRequisiçãoContextoAPartirDoClaims(claimsPrincipal?.Identity as ClaimsIdentity);
+            DefinirContextoDaRequisiçãoAPartirDoClaims(claimsPrincipal?.Identity as ClaimsIdentity);
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-            Console.WriteLine(requisiçãoContexto.Usuario?.Id);
+            Console.WriteLine(contextoDaRequisição.Usuario?.Id);
             return Task.CompletedTask;
         }
 
-        private void DefinirRequisiçãoContextoAPartirDoClaims(ClaimsIdentity claimsIdentity)
-        {
-            requisiçãoContexto.Usuario = new UsuarioId(claimsIdentity?.Claims
+        private void DefinirContextoDaRequisiçãoAPartirDoClaims(ClaimsIdentity claimsIdentity) =>
+            contextoDaRequisição.DefinirContexto(new UsuarioId(claimsIdentity?.Claims
                     .Where(claim => claim.Type.Equals(TokenClaims.UsuarioId(), StringComparison.OrdinalIgnoreCase))
                     .Select(claim => claim.Value)
-                    .FirstOrDefault());
-        }
+                    .FirstOrDefault()));
     }
 }
