@@ -5,9 +5,9 @@ using RenewUp.Rpg.Dominio.Enumerados;
 namespace RenewUp.Rpg.Dominio.Atributos
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class ExibiçãoAttribute: Attribute
+    public class ExibiçãoAttribute : Attribute
     {
-        public ExibiçãoAttribute(string descrição = default, PermissaoCrud permissaoCrud = default, 
+        public ExibiçãoAttribute(string descrição = default, PermissaoCrud permissaoCrud = default,
             [CallerMemberName] string nomeDaPropriedade = default)
         {
             Descrição = descrição ?? nomeDaPropriedade;

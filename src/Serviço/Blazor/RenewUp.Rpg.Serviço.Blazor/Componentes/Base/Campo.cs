@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using System.Reflection;
+using Microsoft.AspNetCore.Components;
 using RenewUp.Rpg.Dominio.Atributos;
 using RenewUp.Rpg.Dominio.Enumerados;
-using System;
-using System.Reflection;
 
 namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
 {
