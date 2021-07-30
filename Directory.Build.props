@@ -5,9 +5,6 @@
       <Link>ValidacaoDependenciaDiagramaDominio.layerdiagram</Link>
       <Visible>False</Visible>
     </AdditionalFiles>
-    <AdditionalFiles Include="$(MSBuildThisFileDirectory).sonarlint\skyinfo.core\CSharp\SonarLint.xml">
-      <Visible>False</Visible>
-    </AdditionalFiles>
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>

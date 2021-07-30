@@ -3,22 +3,22 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
-using SkyInfo.Core.Dominio.Dtos;
-using SkyInfo.Core.Dominio.RequisicaoContexto;
-using SkyInfo.Core.Dominio.Token;
+using RenewUp.Rpg.Dominio.Autenticação.Token;
+using RenewUp.Rpg.Dominio.Dtos;
+using RenewUp.Rpg.Dominio.RequisiçãoContexto;
 
 namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 {
     public class EstadoDaAutenticação : AuthenticationStateProvider
     {
-        private readonly IRequisicaoContexto requisicaoContexto;
+        private readonly IRequisiçãoContexto requisiçãoContexto;
 
-        public EstadoDaAutenticação(IRequisicaoContexto requisicaoContexto) =>
-            this.requisicaoContexto = requisicaoContexto;
+        public EstadoDaAutenticação(IRequisiçãoContexto requisiçãoContexto) =>
+            this.requisiçãoContexto = requisiçãoContexto;
 
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            if (requisicaoContexto?.Usuario?.Id is null)
+            if (requisiçãoContexto?.Usuario?.Id is null)
                 return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
 
             var claim = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, "Nome") }, "Token");
@@ -28,8 +28,7 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 
         public Task Deslogar()
         {
-            requisicaoContexto.Usuario = default;
-            requisicaoContexto.Organizacao = default;
+            requisiçãoContexto.Usuario = default;
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
             return Task.CompletedTask;
         }
@@ -38,18 +37,14 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
         {
             DefinirRequisiçãoContextoAPartirDoClaims(claimsPrincipal?.Identity as ClaimsIdentity);
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-            Console.WriteLine(requisicaoContexto.Usuario?.Id);
+            Console.WriteLine(requisiçãoContexto.Usuario?.Id);
             return Task.CompletedTask;
         }
 
         private void DefinirRequisiçãoContextoAPartirDoClaims(ClaimsIdentity claimsIdentity)
         {
-            requisicaoContexto.Usuario = new UsuarioId(claimsIdentity?.Claims
+            requisiçãoContexto.Usuario = new UsuarioId(claimsIdentity?.Claims
                     .Where(claim => claim.Type.Equals(TokenClaims.UsuarioId(), StringComparison.OrdinalIgnoreCase))
-                    .Select(claim => claim.Value)
-                    .FirstOrDefault());
-            requisicaoContexto.Organizacao = new OrganizacaoId(claimsIdentity?.Claims
-                    .Where(claim => claim.Type.Equals(TokenClaims.OrganizacaoId(), StringComparison.OrdinalIgnoreCase))
                     .Select(claim => claim.Value)
                     .FirstOrDefault());
         }

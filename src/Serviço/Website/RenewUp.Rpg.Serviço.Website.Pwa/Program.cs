@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using RenewUp.Rpg.Dominio.Autenticação.ComandosManipuladores;
+using RenewUp.Rpg.Dominio.Dtos;
+using RenewUp.Rpg.Dominio.RequisiçãoContexto;
 using RenewUp.Rpg.Serviço.Website.Pwa.Autenticação;
-using SkyInfo.Core.Dominio.RequisicaoContexto;
 
 namespace RenewUp.Rpg.Serviço.Website.Pwa
 {
@@ -20,12 +21,9 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            builder.Services.AddSingleton<IRequisicaoContexto>(new RequisicaoContexto()
+            builder.Services.AddSingleton<IRequisiçãoContexto>(new RequisiçãoContexto()
             {
-                Usuario = new SkyInfo.Core.Dominio.Dtos.UsuarioId()
-                {
-                    Id = "Usuário logado"
-                }
+                Usuario = new UsuarioId("Usuário logado")
             });
             builder.Services.AddSingleton<EstadoDaAutenticação>();
             builder.Services.AddSingleton<AuthenticationStateProvider>(serviceProvider =>

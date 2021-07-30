@@ -6,16 +6,14 @@
         <dependencyFromLayerToLayer Id="215eb8b7-ce9b-47f2-9c11-b5dbc74950d3" direction="Forward">
           <layerMoniker Id="a0437665-3149-4ca4-a59f-35a9dee3a5aa" />
         </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="3c5f6270-9b77-4f79-9d27-4af100f93775" direction="Forward">
+          <layerMoniker Id="557ac02e-85d7-45bb-adf4-fcf7b9b49d50" />
+        </dependencyFromLayerToLayer>
       </dependencyToLayers>
       <childLayers>
         <layer Id="58f2c868-c6fd-4ad8-b7ec-c526f1bcd265" name="Blazor">
           <childLayers>
             <layer Id="6338ce4d-c5af-4b76-a34b-3ebcd006ff81" name="RenewUp.Rpg.Serviço.Blazor">
-              <dependencyToLayers>
-                <dependencyFromLayerToLayer Id="8483cf04-580e-4410-bed1-cee6bdb58479" direction="Forward">
-                  <layerMoniker Id="557ac02e-85d7-45bb-adf4-fcf7b9b49d50" />
-                </dependencyFromLayerToLayer>
-              </dependencyToLayers>
               <references>
                 <reference Id="8ac8fbdd-6a30-4f1c-bf65-c43ff6890371" name="RenewUp.Rpg.Serviço.Blazor">
                   <ArtifactNode Label="RenewUp.Rpg.Serviço.Blazor" Category="CodeSchema_Project" Id="(Assembly=../../Serviço/Blazor/RenewUp.Rpg.Serviço.Blazor/RenewUp.Rpg.Serviço.Blazor.csproj)">
