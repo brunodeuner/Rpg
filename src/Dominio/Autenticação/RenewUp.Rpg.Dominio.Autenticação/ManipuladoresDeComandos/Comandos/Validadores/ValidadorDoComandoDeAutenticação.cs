@@ -6,10 +6,10 @@ namespace RenewUp.Rpg.Dominio.Autenticação.Comandos.Validadores
     {
         public ValidadorDoComandoDeAutenticação() =>
             RuleFor(x => x)
-                .Must(CamposInformados)
+                .Must(EmailESenhaInformados)
                 .WithMessage("Informe seu email e sua senha");
 
-        private bool CamposInformados(ComandoDeAutenticação comando) =>
+        private static bool EmailESenhaInformados(ComandoDeAutenticação comando) =>
             !string.IsNullOrEmpty(comando.Email) && !string.IsNullOrEmpty(comando.Senha);
     }
 }
