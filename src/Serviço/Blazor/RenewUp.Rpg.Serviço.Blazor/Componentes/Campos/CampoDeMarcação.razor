@@ -1,0 +1,19 @@
+﻿<label>@Campo.Descrição</label>
+<div class="TamanhosDoComponente">
+    <input type="checkbox" name="toggle" class="check-checkbox" id="@Campo.Id" @bind="@Campo.ValorEmBoolean">
+    <label class="check-label" for="@Campo.Id">
+        <div id="background"></div>
+        <span class="face">
+            <span class="face-container">
+                <span class="eye left"></span>
+                <span class="eye right"></span>
+                <span class="mouth"></span>
+            </span>
+        </span>
+    </label>
+</div>
+
+@code {
+    [Parameter]
+    public Campo Campo { get; set; }
+}

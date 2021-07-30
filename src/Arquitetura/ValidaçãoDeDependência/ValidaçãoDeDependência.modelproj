@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c9521c33-f0d1-4ca7-b873-4e16191e1677}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>DiagramaDeValidaçãoDeDependência</Name>
+    <RootNamespace>DiagramaDeValidaçãoDeDependência</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Validate Include="DiagramaDeValidaçãoDeDependência.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="DiagramaDeValidaçãoDeDependência.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaDeValidaçãoDeDependência.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="DiagramaDeValidaçãoDeDependência.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>DiagramaDeValidaçãoDeDependência.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj">
+      <Name>RenewUp.Rpg.Dominio</Name>
+      <Project>{4c6993ee-5219-4c28-b42c-2d319aa194e4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Serviço\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj">
+      <Name>RenewUp.Rpg.Serviço.Blazor</Name>
+      <Project>{b856d233-c8c5-4797-b366-a7fe0898e5ed}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Serviço\Website\RenewUp.Rpg.Serviço.Website.Pwa\RenewUp.Rpg.Serviço.Website.Pwa.csproj">
+      <Name>RenewUp.Rpg.Serviço.Website.Pwa</Name>
+      <Project>{a1d000d3-8f10-4852-a64a-7e94fbea769d}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

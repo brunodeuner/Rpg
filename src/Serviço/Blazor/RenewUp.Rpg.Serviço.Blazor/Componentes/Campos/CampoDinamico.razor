@@ -1,0 +1,48 @@
+﻿@typeparam TModelo
+@using System.Linq.Expressions;
+@using System.Reflection;
+@using RenewUp.Rpg.Serviço.Blazor.Componentes.Campos.Enumerados
+
+<div class="Padrão">
+    @switch (Campo.Tipo.ObterAPartirDoTipo())
+    {
+        case TipoDeCampo.Texto:
+            <CampoDeTexto Campo=@Campo />
+            break;
+        case TipoDeCampo.CheckBox:
+            <CampoDeMarcação Campo=@Campo />
+            break;
+    }
+</div>
+
+@code {
+    [Parameter]
+    public TModelo Modelo { get; set; }
+    [Parameter]
+    public Expression<Func<TModelo, object>> Para { get; set; }
+    [Parameter]
+    public Campo Campo { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        Campo ??= new Campo(Modelo, ObterPropriedade(Para), OnChange);
+    }
+
+    private void OnChange(ChangeEventArgs e) => StateHasChanged();
+
+    private static PropertyInfo ObterPropriedade(Expression<Func<TModelo, object>> expression)
+    {
+        switch (expression?.Body)
+        {
+            case null:
+                throw new ArgumentNullException(nameof(expression));
+            case UnaryExpression unaryExp when unaryExp.Operand is MemberExpression memberExp:
+                return (PropertyInfo)memberExp.Member;
+            case MemberExpression memberExp:
+                return (PropertyInfo)memberExp.Member;
+            default:
+                throw new ArgumentException($"Não foi possível obter a propriedade a partir da expressão: {expression}");
+        }
+    }
+}

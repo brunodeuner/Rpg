@@ -1,0 +1,16 @@
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.DependencyValidation.Analyzers" Version="0.11.0" />
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)src/Arquitetura/ValidaçãoDeDependência/DiagramaDeValidaçãoDeDependência.layerdiagram">
+      <Link>ValidacaoDependenciaDiagramaDominio.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory).sonarlint\skyinfo.core\CSharp\SonarLint.xml">
+      <Visible>False</Visible>
+    </AdditionalFiles>
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)RegrasDeAnalise.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+</Project>

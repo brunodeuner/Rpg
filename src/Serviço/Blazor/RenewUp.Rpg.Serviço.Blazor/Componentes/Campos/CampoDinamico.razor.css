@@ -1,0 +1,10 @@
+﻿:root {
+    --altura-componente: 3rem;
+}
+ 
+.Padrão {
+    margin: var(--margem-padrão);
+    max-height: var(--altura-componente);
+    height: var(--altura-componente);
+    width: 12.25rem;
+}

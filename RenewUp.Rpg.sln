@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serviço", "Serviço", "{7D1CDF8C-FE01-46D0-B724-6CE024816EB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{C76E1C6E-4A8B-4212-B64F-0DDD0005F841}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Serviço.Website.Pwa", "src\Serviço\Website\RenewUp.Rpg.Serviço.Website.Pwa\RenewUp.Rpg.Serviço.Website.Pwa.csproj", "{A1D000D3-8F10-4852-A64A-7E94FBEA769D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C5C86065-9AB3-432C-9ABA-C4A4FC8B9E1E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		RegrasDeAnalise.ruleset = RegrasDeAnalise.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{30765860-D492-4808-BEDD-7378B4BF417D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arquitetura", "Arquitetura", "{72325AA7-B2C3-44F8-A3CB-0B61FC97B567}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValidaçãoDeDependência", "ValidaçãoDeDependência", "{A130E1D1-3B2B-4573-ACBA-CAD8DD3DB6DD}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ValidaçãoDeDependência", "src\Arquitetura\ValidaçãoDeDependência\ValidaçãoDeDependência.modelproj", "{C9521C33-F0D1-4CA7-B873-4E16191E1677}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{4D456151-045F-4470-8F5B-CA56F3C96529}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Dominio", "src\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj", "{4C6993EE-5219-4C28-B42C-2D319AA194E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Serviço.Blazor", "src\Serviço\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj", "{B856D233-C8C5-4797-B366-A7FE0898E5ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1D000D3-8F10-4852-A64A-7E94FBEA769D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D000D3-8F10-4852-A64A-7E94FBEA769D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D000D3-8F10-4852-A64A-7E94FBEA769D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D000D3-8F10-4852-A64A-7E94FBEA769D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9521C33-F0D1-4CA7-B873-4E16191E1677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9521C33-F0D1-4CA7-B873-4E16191E1677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9521C33-F0D1-4CA7-B873-4E16191E1677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9521C33-F0D1-4CA7-B873-4E16191E1677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6993EE-5219-4C28-B42C-2D319AA194E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6993EE-5219-4C28-B42C-2D319AA194E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6993EE-5219-4C28-B42C-2D319AA194E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6993EE-5219-4C28-B42C-2D319AA194E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B856D233-C8C5-4797-B366-A7FE0898E5ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C76E1C6E-4A8B-4212-B64F-0DDD0005F841} = {7D1CDF8C-FE01-46D0-B724-6CE024816EB9}
+		{A1D000D3-8F10-4852-A64A-7E94FBEA769D} = {C76E1C6E-4A8B-4212-B64F-0DDD0005F841}
+		{30765860-D492-4808-BEDD-7378B4BF417D} = {7D1CDF8C-FE01-46D0-B724-6CE024816EB9}
+		{A130E1D1-3B2B-4573-ACBA-CAD8DD3DB6DD} = {72325AA7-B2C3-44F8-A3CB-0B61FC97B567}
+		{C9521C33-F0D1-4CA7-B873-4E16191E1677} = {A130E1D1-3B2B-4573-ACBA-CAD8DD3DB6DD}
+		{4C6993EE-5219-4C28-B42C-2D319AA194E4} = {4D456151-045F-4470-8F5B-CA56F3C96529}
+		{B856D233-C8C5-4797-B366-A7FE0898E5ED} = {30765860-D492-4808-BEDD-7378B4BF417D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4849B9DE-4833-435E-ACE2-584502FCA308}
+	EndGlobalSection
+EndGlobal

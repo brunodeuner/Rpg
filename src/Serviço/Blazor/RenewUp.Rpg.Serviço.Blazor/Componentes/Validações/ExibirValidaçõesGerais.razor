@@ -1,0 +1,25 @@
+﻿@implements IDisposable;
+
+@foreach (var mensagem in ObterMensagensDeErroDeValidação())
+{
+    <div>@mensagem</div>
+}
+
+
+@code {
+    [CascadingParameter]
+    public EditContext context { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        context.OnValidationStateChanged += HandleValidationStateChanged;
+    }
+
+    public void Dispose() => context.OnValidationStateChanged -= HandleValidationStateChanged;
+
+    private IEnumerable<string> ObterMensagensDeErroDeValidação() =>
+        context.GetValidationMessages(new FieldIdentifier(context.Model, string.Empty));
+
+    private void HandleValidationStateChanged(object o, ValidationStateChangedEventArgs args) => StateHasChanged();
+}

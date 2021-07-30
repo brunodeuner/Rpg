@@ -1,0 +1,9 @@
+﻿<div class="label-float">
+    <input type="text" @bind="@Campo.ValorEmTexto" />
+    <label>@Campo.Descrição</label>
+</div>
+
+@code {
+    [Parameter]
+    public Campo Campo { get; set; }
+}
