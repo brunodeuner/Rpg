@@ -33,9 +33,9 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 
         public bool Carregando { get => carregando; }
 
-        private void DefinirCarregando(bool value, CancellationToken cancellationToken)
+        private void DefinirCarregando(bool valor, CancellationToken cancellationToken)
         {
-            carregando = value;
+            carregando = valor;
             if (carregando)
                 Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken)
                     .ContinueWith((_) => MostrarCarregando = carregando);

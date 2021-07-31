@@ -32,20 +32,18 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
         {
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
-                await ObterRegistrosEAdicionarAListaMostrandoOCarregar();
+                await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
         }
 
-        public async void Pesquisar() => await ObterRegistrosEAdicionarAListaMostrandoOCarregar();
+        public async void Pesquisar() => await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
 
-        private async Task ObterRegistrosEAdicionarAListaMostrandoOCarregar()
+        private async Task ObterRegistrosEAdicionarAListaMostrandoOCarregando()
         {
             await indicadorDeCarregamento.Executar(async cancellationToken =>
-            {
-                await ObterRegistrosEAdicionarAListaInterno(cancellationToken);
-            });
+                await ObterRegistrosEAdicionarALista(cancellationToken));
         }
 
-        private async Task ObterRegistrosEAdicionarAListaInterno(CancellationToken cancellationToken)
+        private async Task ObterRegistrosEAdicionarALista(CancellationToken cancellationToken)
         {
             Registros = new();
             await foreach (var registro in ObterRegistros(cancellationToken))
