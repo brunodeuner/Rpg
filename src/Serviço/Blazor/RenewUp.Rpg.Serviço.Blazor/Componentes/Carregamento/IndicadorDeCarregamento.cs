@@ -7,23 +7,40 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 {
     public partial class IndicadorDeCarregamento : ComponentBase, IDisposable
     {
+        private static readonly TimeSpan TempoParaAParecerOComponenteDeCarregando = TimeSpan.FromMilliseconds(150);
+
+        private bool carregando;
+
         private CancellationTokenSource cancellationTokenSource;
+
+        public bool MostrarCarregando { get; private set; }
 
         public async Task Executar(Func<CancellationToken, Task> tarefa)
         {
+            Cancelar();
             cancellationTokenSource ??= new();
-            Carregando = true;
+            var cancellationToken = cancellationTokenSource.Token;
+            DefinirCarregando(true, cancellationToken);
             try
             {
-                await tarefa(cancellationTokenSource.Token);
+                await tarefa(cancellationToken);
             }
             finally
             {
-                Carregando = false;
+                DefinirCarregando(false, cancellationToken);
             }
         }
 
-        public bool Carregando { get; private set; }
+        public bool Carregando { get => carregando; }
+
+        private void DefinirCarregando(bool value, CancellationToken cancellationToken)
+        {
+            carregando = value;
+            if (carregando)
+                Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken)
+                    .ContinueWith((_) => MostrarCarregando = carregando);
+            StateHasChanged();
+        }
 
         public void Cancelar()
         {

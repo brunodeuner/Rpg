@@ -1,3 +1,38 @@
 ﻿@page "/"
+@using RenewUp.Rpg.Dominio.Repositorios
+@using SkyInfo.Infra.Armazenamento.Abstracoes.Dao
+@using SkyInfo.Infra.Armazenamento.Abstracoes.Id
 
 <h1>Olá!</h1>
+
+<Listagem T=Teste></Listagem>
+
+@code {
+
+    [Inject]
+    public IDao Dao { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await Dao.AdicionarAsync(new Teste()
+        {
+            Id = Guid.NewGuid().ToString()
+        });
+        await Dao.SaveChangesAsync();
+    }
+
+    public class Teste: IId
+    {
+        public string Id { get; set; }
+
+        public override string ToString() => Id;
+    }
+
+    public class RepositorioDeTeste : RepositorioBase<Teste>
+    {
+        public RepositorioDeTeste(IDao dao) : base(dao)
+        {
+        }
+    }
+}

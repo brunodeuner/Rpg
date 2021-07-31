@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
+    <PackageReference Include="SkyInfo.Infra.Armazenamento.Abstracoes" Version="1.2.98" />
     <PackageReference Include="SkyInfo.Infra.Bus.Abstracoes" Version="0.0.6" />
   </ItemGroup>
 </Project>

@@ -9,11 +9,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.6.21355.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.6.21355.2" PrivateAssets="all" />
+    <PackageReference Include="SkyInfo.Infra.Armazenamento.Gerenciador" Version="1.6.5" />
+    <PackageReference Include="SkyInfo.Infra.Armazenamento.Memoria" Version="1.2.2" />
     <PackageReference Include="SkyInfo.Infra.Bus.Mediator" Version="0.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Dominio\Autenticação\RenewUp.Rpg.Dominio.Autenticação\RenewUp.Rpg.Dominio.Autenticação.csproj" />
+    <ProjectReference Include="..\..\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj" />
   </ItemGroup>
 
   <ItemGroup>
