@@ -7,7 +7,7 @@
     </AdditionalFiles>
   </ItemGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)RegrasDeAnalise.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>
