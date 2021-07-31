@@ -42,9 +42,17 @@
       <Name>RenewUp.Rpg.Dominio</Name>
       <Project>{4c6993ee-5219-4c28-b42c-2d319aa194e4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Infraestrutura\RenewUp.Rpg.Infraestrutura\RenewUp.Rpg.Infraestrutura.csproj">
+      <Name>RenewUp.Rpg.Infraestrutura</Name>
+      <Project>{318d819f-82d1-4ece-91ff-788d9b6a02bf}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Serviço\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj">
       <Name>RenewUp.Rpg.Serviço.Blazor</Name>
       <Project>{b856d233-c8c5-4797-b366-a7fe0898e5ed}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Serviço\RenewUp.Rpg.Serviço\RenewUp.Rpg.Serviço.csproj">
+      <Name>RenewUp.Rpg.Serviço</Name>
+      <Project>{1110644e-c98b-4ecc-a989-b725ce5b7dd3}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Serviço\Website\RenewUp.Rpg.Serviço.Website.Pwa\RenewUp.Rpg.Serviço.Website.Pwa.csproj">
       <Name>RenewUp.Rpg.Serviço.Website.Pwa</Name>

@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using RenewUp.Rpg.Dominio.Atributos
 @using RenewUp.Rpg.Dominio.Repositorios
 @using SkyInfo.Infra.Armazenamento.Abstracoes.Dao
 @using SkyInfo.Infra.Armazenamento.Abstracoes.Id
@@ -24,6 +25,7 @@
 
     public class Teste: IId
     {
+        [Filtro]
         public string Id { get; set; }
 
         public override string ToString() => Id;

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj" />
+    <ProjectReference Include="..\..\RenewUp.Rpg.Serviço\RenewUp.Rpg.Serviço.csproj" />
   </ItemGroup>
   
 </Project>

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using RenewUp.Rpg.Dominio.Repositorios;
 using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento;
+using RenewUp.Rpg.Serviço.CasosDeUso;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Avancado.Assincrono.Queryable;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Id;
 
@@ -45,7 +46,7 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
 
         private async Task ObterRegistrosEAdicionarALista(CancellationToken cancellationToken)
         {
-            Registros = new();
+            Registros.Clear();
             await foreach (var registro in ObterRegistros(cancellationToken))
             {
                 Registros.Add(registro);
@@ -54,6 +55,6 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
         }
 
         public IAsyncEnumerable<T> ObterRegistros(CancellationToken cancellationToken) =>
-            Repositorio.Selecionar().ToAsyncEnumerable(cancellationToken);
+            Repositorio.Selecionar().Pesquisar(pesquisa).ToAsyncEnumerable(cancellationToken);
     }
 }

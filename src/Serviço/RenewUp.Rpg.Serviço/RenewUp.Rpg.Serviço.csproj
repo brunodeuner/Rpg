@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj" />
+  </ItemGroup>
+</Project>

@@ -2,18 +2,18 @@
 <layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="c84b368d-4a8a-4615-abd1-df49ba071919" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
   <layers>
     <layer Id="5a617736-a09d-44d0-b65b-c659cf10aed9" name="Serviço">
-      <dependencyToLayers>
-        <dependencyFromLayerToLayer Id="215eb8b7-ce9b-47f2-9c11-b5dbc74950d3" direction="Forward">
-          <layerMoniker Id="a0437665-3149-4ca4-a59f-35a9dee3a5aa" />
-        </dependencyFromLayerToLayer>
-        <dependencyFromLayerToLayer Id="3c5f6270-9b77-4f79-9d27-4af100f93775" direction="Forward">
-          <layerMoniker Id="557ac02e-85d7-45bb-adf4-fcf7b9b49d50" />
-        </dependencyFromLayerToLayer>
-      </dependencyToLayers>
       <childLayers>
         <layer Id="58f2c868-c6fd-4ad8-b7ec-c526f1bcd265" name="Blazor">
           <childLayers>
             <layer Id="6338ce4d-c5af-4b76-a34b-3ebcd006ff81" name="RenewUp.Rpg.Serviço.Blazor">
+              <dependencyToLayers>
+                <dependencyFromLayerToLayer Id="9d4163f2-9f25-4118-9db8-f2f31f9eb616" direction="Forward">
+                  <layerMoniker Id="92b9f023-69dc-4d5f-9da7-b5b74642b9f1" />
+                </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="220a595a-933c-4958-a2bb-a4d06ccfe39a" direction="Forward">
+                  <layerMoniker Id="bcdc1d87-c862-474c-9c1a-1a80fc4e646d" />
+                </dependencyFromLayerToLayer>
+              </dependencyToLayers>
               <references>
                 <reference Id="8ac8fbdd-6a30-4f1c-bf65-c43ff6890371" name="RenewUp.Rpg.Serviço.Blazor">
                   <ArtifactNode Label="RenewUp.Rpg.Serviço.Blazor" Category="CodeSchema_Project" Id="(Assembly=../../Serviço/Blazor/RenewUp.Rpg.Serviço.Blazor/RenewUp.Rpg.Serviço.Blazor.csproj)">
@@ -45,6 +45,9 @@
                 <dependencyFromLayerToLayer Id="c8b66636-5ef9-4cf7-ba54-d5658f8e2b58" direction="Forward">
                   <layerMoniker Id="58f2c868-c6fd-4ad8-b7ec-c526f1bcd265" />
                 </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="3d65add6-dbeb-498e-b502-fafbf007ab93" direction="Forward">
+                  <layerMoniker Id="80bf63b3-e03a-4b95-9510-572be3d7b84d" />
+                </dependencyFromLayerToLayer>
               </dependencyToLayers>
               <references>
                 <reference Id="d86bf4ba-ccbe-4baa-8246-541d315ca6ce" name="RenewUp.Rpg.Serviço.Website.Pwa">
@@ -72,6 +75,27 @@
             </reference>
           </references>
         </layer>
+        <layer Id="bcdc1d87-c862-474c-9c1a-1a80fc4e646d" name="RenewUp.Rpg.Serviço">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="b5bb94e2-438a-431e-b662-7a5ddbacb873" direction="Forward">
+              <layerMoniker Id="89f02538-9d6c-4807-aab5-84af6a146b8a" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="ba066e71-0a6a-48b2-8288-26d99f7731ab" direction="Forward">
+              <layerMoniker Id="92b9f023-69dc-4d5f-9da7-b5b74642b9f1" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="de299de8-a8be-4b0a-91a5-05a8bc0cfaf5" name="RenewUp.Rpg.Serviço">
+              <ArtifactNode Label="RenewUp.Rpg.Serviço" Category="CodeSchema_Project" Id="(Assembly=../../Serviço/RenewUp.Rpg.Serviço/RenewUp.Rpg.Serviço.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Serviço)" Label="RenewUp.Rpg.Serviço.dll" Category="CodeSchema_Assembly">
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
       </childLayers>
       <references>
         <reference Id="5b7b636d-bde1-4ac3-9bc1-5d8eb8608774" name="Serviço">
@@ -88,15 +112,15 @@
         </reference>
       </references>
     </layer>
-    <layer Id="557ac02e-85d7-45bb-adf4-fcf7b9b49d50" name="Dominio Base">
+    <layer Id="5bd84851-c41b-4ea2-99ad-9738de8dab64" name="Infraestrutura">
       <childLayers>
-        <layer Id="b28f0b1c-0b80-4bf4-8e9d-01c9061dcb2d" name="RenewUp.Rpg.Dominio">
+        <layer Id="89f02538-9d6c-4807-aab5-84af6a146b8a" name="RenewUp.Rpg.Infraestrutura">
           <references>
-            <reference Id="d44c3b31-5db1-445b-a4a9-24cc4557cf21" name="RenewUp.Rpg.Dominio">
-              <ArtifactNode Label="RenewUp.Rpg.Dominio" Category="CodeSchema_Project" Id="(Assembly=../../Dominio/RenewUp.Rpg.Dominio/RenewUp.Rpg.Dominio.csproj)">
+            <reference Id="e652e9c7-6181-4e5b-949a-39c801087006" name="RenewUp.Rpg.Infraestrutura">
+              <ArtifactNode Label="RenewUp.Rpg.Infraestrutura" Category="CodeSchema_Project" Id="(Assembly=../../Infraestrutura/RenewUp.Rpg.Infraestrutura/RenewUp.Rpg.Infraestrutura.csproj)">
                 <Category Ref="File" />
               </ArtifactNode>
-              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Dominio)" Label="RenewUp.Rpg.Dominio.dll" Category="CodeSchema_Assembly">
+              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Infraestrutura)" Label="RenewUp.Rpg.Infraestrutura.dll" Category="CodeSchema_Assembly">
                 <Category Ref="FileSystem.Category.FileOfType.dll" />
                 <LinkCategory Ref="Produces" />
                 <LinkCategory Ref="Represents" />
@@ -105,19 +129,30 @@
           </references>
         </layer>
       </childLayers>
+      <references>
+        <reference Id="546b5e0a-387e-48b4-a7eb-e5d9704cc120" name="Infraestrutura">
+          <ArtifactNode Label="Infraestrutura" Category="CodeSchema_Project" Id="(Assembly=../../../Infraestrutura)">
+            <Category Ref="CodeMap_SolutionFolder" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=RenewUp.Rpg.Infraestrutura)" Label="RenewUp.Rpg.Infraestrutura.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
     </layer>
-    <layer Id="a0437665-3149-4ca4-a59f-35a9dee3a5aa" name="Dominio">
-      <dependencyToLayers>
-        <dependencyFromLayerToLayer Id="5b53dd9a-43ab-43e4-b735-f4e7959c8c8e" direction="Forward">
-          <layerMoniker Id="557ac02e-85d7-45bb-adf4-fcf7b9b49d50" />
-        </dependencyFromLayerToLayer>
-      </dependencyToLayers>
+    <layer Id="80bf63b3-e03a-4b95-9510-572be3d7b84d" name="Dominio">
       <childLayers>
-        <layer Id="7c39c36f-8433-4f79-8420-2c8bc5f79d11" name="Autenticação">
+        <layer Id="10127dda-201c-4dae-98b3-0febbfe170d2" name="Autenticação">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="698d005a-55f6-45c6-8ede-7f292f93bbc3" direction="Forward">
+              <layerMoniker Id="92b9f023-69dc-4d5f-9da7-b5b74642b9f1" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
           <childLayers>
-            <layer Id="a65a3c43-4b8d-4daf-a865-49f59a908835" name="RenewUp.Rpg.Dominio.Autenticação">
+            <layer Id="d757a7bf-791b-4c7f-9a91-7f079283eddd" name="RenewUp.Rpg.Dominio.Autenticação">
               <references>
-                <reference Id="88c83f93-9b10-4a6b-bd50-79006c6dde67" name="RenewUp.Rpg.Dominio.Autenticação">
+                <reference Id="5a6f9224-01c0-436b-908d-136b7346687a" name="RenewUp.Rpg.Dominio.Autenticação">
                   <ArtifactNode Label="RenewUp.Rpg.Dominio.Autenticação" Category="CodeSchema_Project" Id="(Assembly=../../Dominio/Autenticação/RenewUp.Rpg.Dominio.Autenticação/RenewUp.Rpg.Dominio.Autenticação.csproj)">
                     <Category Ref="File" />
                   </ArtifactNode>
@@ -131,7 +166,7 @@
             </layer>
           </childLayers>
           <references>
-            <reference Id="22cd9633-3031-4eb7-b4e8-ca80a13d9390" name="Autenticação">
+            <reference Id="91e7ddef-f7c6-43f2-8dab-d77932220ef1" name="Autenticação">
               <ArtifactNode Label="Autenticação" Category="CodeSchema_Project" Id="(Assembly=../../../Dominio/Autenticação)">
                 <Category Ref="CodeMap_SolutionFolder" />
               </ArtifactNode>
@@ -142,9 +177,28 @@
             </reference>
           </references>
         </layer>
+        <layer Id="92b9f023-69dc-4d5f-9da7-b5b74642b9f1" name="RenewUp.Rpg.Dominio">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="1b858bbd-6be6-4b52-aca9-b91f4f9de227" direction="Forward">
+              <layerMoniker Id="89f02538-9d6c-4807-aab5-84af6a146b8a" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="a4e91aed-5c64-4d23-a7ac-bc6cb72a0967" name="RenewUp.Rpg.Dominio">
+              <ArtifactNode Label="RenewUp.Rpg.Dominio" Category="CodeSchema_Project" Id="(Assembly=../../Dominio/RenewUp.Rpg.Dominio/RenewUp.Rpg.Dominio.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Dominio)" Label="RenewUp.Rpg.Dominio.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
       </childLayers>
       <references>
-        <reference Id="a51d46ac-82ae-4adf-9fb7-02be7e834484" name="Dominio">
+        <reference Id="bfc23a4d-fc47-419e-977c-76c40d696883" name="Dominio">
           <ArtifactNode Label="Dominio" Category="CodeSchema_Project" Id="(Assembly=../../../Dominio)">
             <Category Ref="CodeMap_SolutionFolder" />
           </ArtifactNode>
