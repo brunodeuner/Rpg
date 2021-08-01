@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using AutoMapper
 @using RenewUp.Rpg.Dominio.Atributos
 @using RenewUp.Rpg.Dominio.Repositorios
 @using SkyInfo.Infra.Armazenamento.Abstracoes.Dao
@@ -7,16 +8,16 @@
 <h1>Olá!</h1>
 
 <IndicadorDeCarregamento @ref="indicadorDeCarregamento">
-    <EditForm Model=@comando>
+    <EditForm Model=@teste>
         <InicilizadorDoContexto IndicadorDeCarregamento="@indicadorDeCarregamento" Carregou="() => StateHasChanged()" />
         <Listagem T=Teste IndicadorDeCarregamento="@indicadorDeCarregamento"></Listagem>
-        <label>@comando.Teste.Id : @comando.Teste.Descricao</label>
+        <label>@teste.Id : @teste.Descricao</label>
     </EditForm>
 </IndicadorDeCarregamento>
 
 @code {
     public IndicadorDeCarregamento indicadorDeCarregamento;
-    private Comando comando;
+    private Teste teste;
 
 
     [Inject]
@@ -33,24 +34,13 @@
         await Dao.AdicionarAsync(teste2);
         await Dao.SaveChangesAsync();
 
-        comando = new Comando(new Teste()
+        teste = new Teste()
         {
             Id = teste2.Id
-        });
+        };
     }
 
-    public class Comando
-    {
-        public Comando(Teste teste)
-        {
-            Teste = teste;
-        }
-
-        public Teste Teste { get; set; }
-
-        public override string ToString() => Teste.ToString();
-    }
-
+    [AutoMap(typeof(Teste))]
 
     public class Teste : IId
     {

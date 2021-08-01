@@ -18,6 +18,8 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa
             var builder = WebAssemblyHostBuilder.CreateDefault();
             builder.RootComponents.Add<App>("#app");
 
+            builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
             builder.Services.InjetarServiçosDeAutenticação();
             builder.Services.InjetarServiços();
             builder.Services.InjetarDomínio();

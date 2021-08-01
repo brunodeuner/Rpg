@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Dao;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Generic;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Id;
@@ -18,11 +19,13 @@ namespace SkyInfo.Core.Dominio.Inicializador
     {
         private readonly IDao dao;
         private readonly IMediatorHandler bus;
+        private readonly IMapper mapper;
 
-        public InicializadorArmazenamentoId(IDao dao, IMediatorHandler bus)
+        public InicializadorArmazenamentoId(IDao dao, IMediatorHandler bus, IMapper mapper)
         {
             this.dao = dao;
             this.bus = bus;
+            this.mapper = mapper;
         }
         public async Task InicializarAsync<T>(T objeto, CancellationToken cancellationToken = default)
         {
@@ -46,11 +49,19 @@ namespace SkyInfo.Core.Dominio.Inicializador
             if (informacoesInicializador.EhLista)
                 AtribuirValorAPropriedadeDoTipoLista(informacoesInicializador, leituras);
             else
-                informacoesInicializador.Propriedade.SetValue(informacoesInicializador.ObjetoPropriedade,
-                    leituras.FirstOrDefault());
+                DefinirValor(informacoesInicializador, leituras.First());
         }
 
-        private static void AtribuirValorAPropriedadeDoTipoLista(InformacoesInicializador informacoesInicializador,
+        private void DefinirValor(InformacoesInicializador informacoesInicializador, object valor)
+        {
+            if (informacoesInicializador.Propriedade is not null)
+                informacoesInicializador.Propriedade.SetValue(informacoesInicializador.ObjetoPropriedade, valor);
+            else
+                mapper.Map(valor, informacoesInicializador.ObjetoPropriedade,
+                    valor.GetType(), informacoesInicializador.ObjetoPropriedade.GetType());
+        }
+
+        private void AtribuirValorAPropriedadeDoTipoLista(InformacoesInicializador informacoesInicializador,
             List<object> leituras)
         {
             var tipoGenerico = informacoesInicializador.Propriedade.PropertyType.GetGenericArguments().First();
@@ -58,7 +69,7 @@ namespace SkyInfo.Core.Dominio.Inicializador
             foreach (var leitura in leituras)
                 novaLista.GetType().GetMethod(nameof(ICollection<object>.Add)).Invoke(novaLista,
                     new[] { leitura });
-            informacoesInicializador.Propriedade.SetValue(informacoesInicializador.ObjetoPropriedade, novaLista);
+            DefinirValor(informacoesInicializador, novaLista);
         }
 
         private async Task<List<object>> ObterLeituras(InformacoesInicializador informacoesInicializador,
@@ -90,6 +101,8 @@ namespace SkyInfo.Core.Dominio.Inicializador
             if (Equals(objeto, default(T)))
                 return listaInformacoesInicializador;
 
+            ProcessarPropriedade(objeto, ref listaInformacoesInicializador, default, objeto);
+
             foreach (var propriedade in objeto.GetType().GetProperties()
                 .Where(x => x.CanRead && x.CanWrite && !x.GetIndexParameters().Any()))
             {
@@ -113,7 +126,7 @@ namespace SkyInfo.Core.Dominio.Inicializador
                 ProcessarLista(objeto, ref listaInformacoesInicializador, propriedade, listaValorPropriedade);
                 return;
             }
-            if (propriedade.PropertyType.IsClass)
+            if (propriedade?.PropertyType.IsClass ?? false)
                 ProcessarClasse(listaInformacoesInicializador, valorPropriedade);
         }
 
