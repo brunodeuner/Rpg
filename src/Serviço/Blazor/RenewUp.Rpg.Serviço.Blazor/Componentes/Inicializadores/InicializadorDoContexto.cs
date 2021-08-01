@@ -7,9 +7,9 @@ using RenewUp.Rpg.Serviço.Blazor.Componentes.Base.Atributos;
 using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento;
 using SkyInfo.Infra.Geral.Inicializador.Abstracoes;
 
-namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção
+namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Inicializadores
 {
-    public class InicilizadorDoContexto : ComponenteBase
+    public class InicializadorDoContexto : ComponenteBase
     {
         [Inject]
         public IInicializador Inicializador { get; set; }
