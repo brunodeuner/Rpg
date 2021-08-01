@@ -9,7 +9,7 @@
 
 <IndicadorDeCarregamento @ref="indicadorDeCarregamento">
     <EditForm Model=@teste>
-        <InicilizadorDoContexto IndicadorDeCarregamento="@indicadorDeCarregamento" Carregou="() => StateHasChanged()" />
+        <InicializadorDoContexto IndicadorDeCarregamento="@indicadorDeCarregamento" Carregou="() => StateHasChanged()" />
         <Listagem T=Teste IndicadorDeCarregamento="@indicadorDeCarregamento"></Listagem>
         <label>@teste.Id : @teste.Descricao</label>
     </EditForm>
