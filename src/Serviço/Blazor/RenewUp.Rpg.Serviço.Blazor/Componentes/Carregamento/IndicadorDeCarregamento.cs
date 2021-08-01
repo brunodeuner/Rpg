@@ -8,12 +8,12 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
     public partial class IndicadorDeCarregamento : ComponentBase, IDisposable
     {
         private static readonly TimeSpan TempoParaAParecerOComponenteDeCarregando = TimeSpan.FromMilliseconds(150);
-
-        private bool carregando;
-
         private CancellationTokenSource cancellationTokenSource;
+        private bool carregando;
+        private bool mostrarCarregando;
 
-        public bool MostrarCarregando { get; private set; }
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
 
         public async Task Executar(Func<CancellationToken, Task> tarefa)
         {
@@ -31,15 +31,23 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
             }
         }
 
-        public bool Carregando { get => carregando; }
-
         private void DefinirCarregando(bool valor, CancellationToken cancellationToken)
         {
             carregando = valor;
             if (carregando)
+            {
                 Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken)
-                    .ContinueWith((_) => MostrarCarregando = carregando);
-            StateHasChanged();
+                    .ContinueWith(_ =>
+                    {
+                        mostrarCarregando = carregando;
+                        StateHasChanged();
+                    }, cancellationToken);
+            }
+            else
+            {
+                mostrarCarregando = carregando;
+                StateHasChanged();
+            }
         }
 
         public void Cancelar()

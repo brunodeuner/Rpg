@@ -48,6 +48,9 @@
                 <dependencyFromLayerToLayer Id="3d65add6-dbeb-498e-b502-fafbf007ab93" direction="Forward">
                   <layerMoniker Id="80bf63b3-e03a-4b95-9510-572be3d7b84d" />
                 </dependencyFromLayerToLayer>
+                <dependencyFromLayerToLayer Id="b8e39609-bd13-49b6-acbb-227f04ec1e63" direction="Forward">
+                  <layerMoniker Id="5dc6a7e0-a875-4d7b-a290-b593f8368f59" />
+                </dependencyFromLayerToLayer>
               </dependencyToLayers>
               <references>
                 <reference Id="d86bf4ba-ccbe-4baa-8246-541d315ca6ce" name="RenewUp.Rpg.Serviço.Website.Pwa">
@@ -121,6 +124,20 @@
                 <Category Ref="File" />
               </ArtifactNode>
               <ExpandedNode Id="(Assembly=RenewUp.Rpg.Infraestrutura)" Label="RenewUp.Rpg.Infraestrutura.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+        <layer Id="16c17ba2-b04d-4310-a1aa-77d9ce301ccd" name="RenewUp.Rpg.Infraestrutura.Inicializadores">
+          <references>
+            <reference Id="e4248ef4-abee-4a99-b004-157ec55c58f9" name="RenewUp.Rpg.Infraestrutura.Inicializadores">
+              <ArtifactNode Label="RenewUp.Rpg.Infraestrutura.Inicializadores" Category="CodeSchema_Project" Id="(Assembly=../../Infraestrutura/RenewUp.Rpg.Infraestrutura.Inicializadores/RenewUp.Rpg.Infraestrutura.Inicializadores.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Infraestrutura.Inicializadores)" Label="RenewUp.Rpg.Infraestrutura.Inicializadores.dll" Category="CodeSchema_Assembly">
                 <Category Ref="FileSystem.Category.FileOfType.dll" />
                 <LinkCategory Ref="Produces" />
                 <LinkCategory Ref="Represents" />
@@ -207,6 +224,43 @@
             <LinkCategory Ref="Represents" />
           </ExpandedNode>
           <ExpandedNode Id="(Assembly=RenewUp.Rpg.Dominio.Autenticação)" Label="RenewUp.Rpg.Dominio.Autenticação.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="887371a0-1767-4717-a90b-0c7256db8b9a" name="Aplicação">
+      <childLayers>
+        <layer Id="5dc6a7e0-a875-4d7b-a290-b593f8368f59" name="RenewUp.Rpg.Aplicação">
+          <dependencyToLayers>
+            <dependencyFromLayerToLayer Id="75f2f6cb-428a-4e62-bf66-13eee388cc17" direction="Forward">
+              <layerMoniker Id="80bf63b3-e03a-4b95-9510-572be3d7b84d" />
+            </dependencyFromLayerToLayer>
+            <dependencyFromLayerToLayer Id="5350d067-fb28-42a2-8436-8f4e2f849e10" direction="Forward">
+              <layerMoniker Id="16c17ba2-b04d-4310-a1aa-77d9ce301ccd" />
+            </dependencyFromLayerToLayer>
+          </dependencyToLayers>
+          <references>
+            <reference Id="41ef17d4-784b-4ca3-ba02-1a45a25de71b" name="RenewUp.Rpg.Aplicação">
+              <ArtifactNode Label="RenewUp.Rpg.Aplicação" Category="CodeSchema_Project" Id="(Assembly=../../Aplicação/RenewUp.Rpg.Aplicação/RenewUp.Rpg.Aplicação.csproj)">
+                <Category Ref="File" />
+              </ArtifactNode>
+              <ExpandedNode Id="(Assembly=RenewUp.Rpg.Aplicação)" Label="RenewUp.Rpg.Aplicação.dll" Category="CodeSchema_Assembly">
+                <Category Ref="FileSystem.Category.FileOfType.dll" />
+                <LinkCategory Ref="Produces" />
+                <LinkCategory Ref="Represents" />
+              </ExpandedNode>
+            </reference>
+          </references>
+        </layer>
+      </childLayers>
+      <references>
+        <reference Id="f99c9b55-9a45-4656-af26-d398cb1640c1" name="Aplicação">
+          <ArtifactNode Label="Aplicação" Category="CodeSchema_Project" Id="(Assembly=../../../Aplicação)">
+            <Category Ref="CodeMap_SolutionFolder" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=RenewUp.Rpg.Aplicação)" Label="RenewUp.Rpg.Aplicação.dll" Category="CodeSchema_Assembly">
             <Category Ref="FileSystem.Category.FileOfType.dll" />
             <LinkCategory Ref="Represents" />
           </ExpandedNode>

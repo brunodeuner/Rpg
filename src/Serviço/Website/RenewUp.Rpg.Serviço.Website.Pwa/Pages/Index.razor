@@ -6,9 +6,18 @@
 
 <h1>Olá!</h1>
 
-<Listagem T=Teste></Listagem>
+<IndicadorDeCarregamento @ref="indicadorDeCarregamento">
+    <EditForm Model=@comando>
+        <InicilizadorDoContexto IndicadorDeCarregamento="@indicadorDeCarregamento" Carregou="() => StateHasChanged()" />
+        <Listagem T=Teste IndicadorDeCarregamento="@indicadorDeCarregamento"></Listagem>
+        <label>@comando.Teste.Id : @comando.Teste.Descricao</label>
+    </EditForm>
+</IndicadorDeCarregamento>
 
 @code {
+    public IndicadorDeCarregamento indicadorDeCarregamento;
+    private Comando comando;
+
 
     [Inject]
     public IDao Dao { get; set; }
@@ -16,19 +25,40 @@
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        await Dao.AdicionarAsync(new Teste()
+        var teste2 = new Teste()
         {
-            Id = Guid.NewGuid().ToString()
-        });
+            Id = Guid.NewGuid().ToString(),
+            Descricao = "abc"
+        };
+        await Dao.AdicionarAsync(teste2);
         await Dao.SaveChangesAsync();
+
+        comando = new Comando(new Teste()
+        {
+            Id = teste2.Id
+        });
     }
 
-    public class Teste: IId
+    public class Comando
+    {
+        public Comando(Teste teste)
+        {
+            Teste = teste;
+        }
+
+        public Teste Teste { get; set; }
+
+        public override string ToString() => Teste.ToString();
+    }
+
+
+    public class Teste : IId
     {
         [Filtro]
         public string Id { get; set; }
+        public string Descricao { get; set; }
 
-        public override string ToString() => Id;
+        public override string ToString() => Id + "-" + Descricao;
     }
 
     public class RepositorioDeTeste : RepositorioBase<Teste>

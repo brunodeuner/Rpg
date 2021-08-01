@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="SkyInfo.Infra.Dominio" Version="1.6.5" />
+    <PackageReference Include="SkyInfo.Infra.Geral.Inicializador.Abstracoes" Version="1.1.12" />
+  </ItemGroup>
+</Project>

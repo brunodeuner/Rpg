@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Aplicação\RenewUp.Rpg.Aplicação\RenewUp.Rpg.Aplicação.csproj" />
     <ProjectReference Include="..\..\..\Dominio\Autenticação\RenewUp.Rpg.Dominio.Autenticação\RenewUp.Rpg.Dominio.Autenticação.csproj" />
     <ProjectReference Include="..\..\Blazor\RenewUp.Rpg.Serviço.Blazor\RenewUp.Rpg.Serviço.Blazor.csproj" />
   </ItemGroup>

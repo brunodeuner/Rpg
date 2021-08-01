@@ -37,7 +37,6 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
         {
             DefinirContextoDaRequisiçãoAPartirDoClaims(claimsPrincipal?.Identity as ClaimsIdentity);
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
-            Console.WriteLine(contextoDaRequisição.Usuario?.Id);
             return Task.CompletedTask;
         }
 

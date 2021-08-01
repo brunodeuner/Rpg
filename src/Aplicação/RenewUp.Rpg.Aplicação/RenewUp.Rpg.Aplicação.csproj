@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="SkyInfo.Infra.Armazenamento.Gerenciador" Version="1.6.5" />
+    <PackageReference Include="SkyInfo.Infra.Armazenamento.Memoria" Version="1.2.2" />
+    <PackageReference Include="SkyInfo.Infra.Bus.Memoria" Version="0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj" />
+    <ProjectReference Include="..\..\Infraestrutura\RenewUp.Rpg.Infraestrutura.Inicializadores\RenewUp.Rpg.Infraestrutura.Inicializadores.csproj" />
+  </ItemGroup>
+
+</Project>

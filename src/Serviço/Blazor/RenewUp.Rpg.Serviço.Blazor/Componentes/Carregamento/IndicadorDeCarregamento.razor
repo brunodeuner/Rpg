@@ -1,4 +1,8 @@
-﻿@if (MostrarCarregando)
+﻿@if (@mostrarCarregando)
 {
     <h3>IndicadorDeCarregamento</h3>
+}
+else
+{
+    @ChildContent
 }

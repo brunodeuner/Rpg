@@ -14,7 +14,9 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
         where T : class, IId, new()
     {
         private string pesquisa;
-        public IndicadorDeCarregamento indicadorDeCarregamento;
+
+        [Parameter]
+        public IndicadorDeCarregamento IndicadorDeCarregamento { get; set; }
 
         public List<T> Registros { get; private set; } = new();
         public string Pesquisa
@@ -40,7 +42,7 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
 
         private async Task ObterRegistrosEAdicionarAListaMostrandoOCarregando()
         {
-            await indicadorDeCarregamento.Executar(async cancellationToken =>
+            await IndicadorDeCarregamento.Executar(async cancellationToken =>
                 await ObterRegistrosEAdicionarALista(cancellationToken));
         }
 

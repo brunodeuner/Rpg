@@ -34,6 +34,10 @@
     </Validate>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Aplicação\RenewUp.Rpg.Aplicação\RenewUp.Rpg.Aplicação.csproj">
+      <Name>RenewUp.Rpg.Aplicação</Name>
+      <Project>{22659260-6a80-40b7-be26-99bc72a25f2d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Dominio\Autenticação\RenewUp.Rpg.Dominio.Autenticação\RenewUp.Rpg.Dominio.Autenticação.csproj">
       <Name>RenewUp.Rpg.Dominio.Autenticação</Name>
       <Project>{b42ae422-088f-405f-ba33-8fcd48e66947}</Project>
@@ -41,6 +45,10 @@
     <ProjectReference Include="..\..\Dominio\RenewUp.Rpg.Dominio\RenewUp.Rpg.Dominio.csproj">
       <Name>RenewUp.Rpg.Dominio</Name>
       <Project>{4c6993ee-5219-4c28-b42c-2d319aa194e4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Infraestrutura\RenewUp.Rpg.Infraestrutura.Inicializadores\RenewUp.Rpg.Infraestrutura.Inicializadores.csproj">
+      <Name>RenewUp.Rpg.Infraestrutura.Inicializadores</Name>
+      <Project>{a894d9dc-c69c-41f9-8712-82569ac518b7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Infraestrutura\RenewUp.Rpg.Infraestrutura\RenewUp.Rpg.Infraestrutura.csproj">
       <Name>RenewUp.Rpg.Infraestrutura</Name>
