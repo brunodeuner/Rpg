@@ -21,7 +21,7 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Inicializadores
         {
             await base.OnInitializedAsync();
             await IndicadorDeCarregamento.Executar(cancellationToken =>
-                   Inicializador.InicializarAsync(Context.Model, cancellationToken));
+                Inicializador.InicializarAsync(Context.Model, cancellationToken));
         }
     }
 }
