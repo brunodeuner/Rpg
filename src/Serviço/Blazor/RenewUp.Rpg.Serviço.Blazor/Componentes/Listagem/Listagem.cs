@@ -31,11 +31,10 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
         [Inject]
         public RepositorioBase<T> Repositorio { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override async Task OnInitializedAsync()
         {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender)
-                await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
+            await base.OnInitializedAsync();
+            await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
         }
 
         public async void Pesquisar() => await ObterRegistrosEAdicionarAListaMostrandoOCarregando();

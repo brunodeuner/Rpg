@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using RenewUp.Rpg.Serviço.Blazor.Componentes.Base;
@@ -17,18 +16,12 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Inicializadores
         public EditContext Context { get; set; }
         [Parameter, ParâmetroObrigatório]
         public IndicadorDeCarregamento IndicadorDeCarregamento { get; set; }
-        [Parameter]
-        public Action Carregou { get; set; }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override async Task OnInitializedAsync()
         {
-            await base.OnAfterRenderAsync(firstRender);
-            if (firstRender)
-            {
-                await IndicadorDeCarregamento.Executar(cancellationToken =>
-                    Inicializador.InicializarAsync(Context.Model, cancellationToken));
-                Carregou?.Invoke();
-            }
+            await base.OnInitializedAsync();
+            await IndicadorDeCarregamento.Executar(cancellationToken =>
+                   Inicializador.InicializarAsync(Context.Model, cancellationToken));
         }
     }
 }
