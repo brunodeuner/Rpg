@@ -18,7 +18,7 @@ namespace RenewUp.Rpg.Serviço.Website.Pwa.Autenticação
 
         public override Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            if (contextoDaRequisição?.Usuario?.Id is null)
+            if (contextoDaRequisição.NãoAutenticado())
                 return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
 
             var claim = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, "Nome") }, "Token");

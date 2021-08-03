@@ -7,5 +7,7 @@ namespace RenewUp.Rpg.Dominio.ContextoDaRequisição
         UsuarioId Usuario { get; }
         void DefinirContexto(UsuarioId usuario);
         void LimparContexto();
+        bool Autenticado();
+        bool NãoAutenticado();
     }
 }
