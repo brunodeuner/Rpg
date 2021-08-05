@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using RenewUp.Rpg.Dominio.Repositorios;
-using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento;
 using RenewUp.Rpg.Serviço.CasosDeUso;
-using SkyInfo.Infra.Armazenamento.Abstracoes.Avancado.Assincrono.Queryable;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Id;
 
 namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
@@ -14,11 +11,8 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
         where T : class, IId, new()
     {
         private string pesquisa;
+        private RegistrosDaListagem<T> registrosDaListagem;
 
-        [Parameter]
-        public IndicadorDeCarregamento IndicadorDeCarregamento { get; set; }
-
-        public List<T> Registros { get; private set; } = new();
         public string Pesquisa
         {
             get => pesquisa; set
@@ -28,34 +22,10 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Listagem
             }
         }
 
-        [Inject]
-        public RepositorioBase<T> Repositorio { get; set; }
+        public async void Pesquisar() => await registrosDaListagem
+            .ObterRegistrosEAdicionarAListaMostrandoOCarregando();
 
-        protected override async Task OnInitializedAsync()
-        {
-            await base.OnInitializedAsync();
-            await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
-        }
-
-        public async void Pesquisar() => await ObterRegistrosEAdicionarAListaMostrandoOCarregando();
-
-        private async Task ObterRegistrosEAdicionarAListaMostrandoOCarregando()
-        {
-            await IndicadorDeCarregamento.Executar(async cancellationToken =>
-                await ObterRegistrosEAdicionarALista(cancellationToken));
-        }
-
-        private async Task ObterRegistrosEAdicionarALista(CancellationToken cancellationToken)
-        {
-            Registros.Clear();
-            await foreach (var registro in ObterRegistros(cancellationToken))
-            {
-                Registros.Add(registro);
-                StateHasChanged();
-            }
-        }
-
-        public IAsyncEnumerable<T> ObterRegistros(CancellationToken cancellationToken) =>
-            Repositorio.Selecionar().Pesquisar(pesquisa).ToAsyncEnumerable(cancellationToken);
+        private ValueTask<IQueryable<T>> Filtrar(IQueryable<T> query, CancellationToken cancellationToken) =>
+            ValueTask.FromResult(query.Pesquisar(Pesquisa));
     }
 }

@@ -1,16 +1,7 @@
 @using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 @typeparam T;
 
-@if (@IndicadorDeCarregamento is null)
-{
-    <IndicadorDeCarregamento @ref="IndicadorDeCarregamento" />
-}
-
 <input type="text" @bind-value="@Pesquisa" />
 
-<ol>
-    @foreach (var registro in Registros)
-    {
-        <li>@registro</li>
-    }
-</ol>
+<RegistrosDaListagem T=T @ref="@registrosDaListagem" OnQuery="@Filtrar" />
+

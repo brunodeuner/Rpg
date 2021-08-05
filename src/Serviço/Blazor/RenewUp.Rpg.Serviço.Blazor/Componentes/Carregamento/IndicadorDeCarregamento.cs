@@ -31,23 +31,12 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
             }
         }
 
-        private void DefinirCarregando(bool valor, CancellationToken cancellationToken)
+        private async void DefinirCarregando(bool valor, CancellationToken cancellationToken)
         {
             carregando = valor;
             if (carregando)
-            {
-                Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken)
-                    .ContinueWith(_ =>
-                    {
-                        mostrarCarregando = carregando;
-                        StateHasChanged();
-                    }, cancellationToken);
-            }
-            else
-            {
-                mostrarCarregando = carregando;
-                StateHasChanged();
-            }
+                await Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken);
+            DefinirMonstrarCarregamento();
         }
 
         public void Cancelar()
@@ -58,6 +47,12 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
             cancellationTokenSource.Cancel();
             cancellationTokenSource.Dispose();
             cancellationTokenSource = null;
+        }
+
+        private void DefinirMonstrarCarregamento()
+        {
+            mostrarCarregando = carregando;
+            StateHasChanged();
         }
 
         public void Dispose()

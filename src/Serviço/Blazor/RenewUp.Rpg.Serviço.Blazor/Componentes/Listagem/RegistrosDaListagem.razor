@@ -1,0 +1,12 @@
+﻿@using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
+@typeparam T;
+@inherits ComponenteBase;
+
+<IndicadorDeCarregamento @ref="@indicadorDeCarregamento">
+    <ol>
+        @foreach (var registro in Registros)
+        {
+            <li>@registro</li>
+        }
+    </ol>
+</IndicadorDeCarregamento>

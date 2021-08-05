@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Infraestrutura.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicação", "Aplicação", "{ECB758EF-23E0-43F3-8A54-64B26E9D092F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenewUp.Rpg.Aplicação", "src\Aplicação\RenewUp.Rpg.Aplicação\RenewUp.Rpg.Aplicação.csproj", "{22659260-6A80-40B7-BE26-99BC72A25F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RenewUp.Rpg.Aplicação", "src\Aplicação\RenewUp.Rpg.Aplicação\RenewUp.Rpg.Aplicação.csproj", "{22659260-6A80-40B7-BE26-99BC72A25F2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
