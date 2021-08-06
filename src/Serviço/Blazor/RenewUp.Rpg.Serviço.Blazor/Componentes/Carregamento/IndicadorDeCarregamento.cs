@@ -9,11 +9,13 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
     {
         private static readonly TimeSpan TempoParaAParecerOComponenteDeCarregando = TimeSpan.FromMilliseconds(150);
         private CancellationTokenSource cancellationTokenSource;
-        private bool carregando;
-        private bool mostrarCarregando;
+        private bool exibirCarregando;
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
+        [Parameter]
+        public EventCallback<bool> AoAtualizarValorDeProcessando { get; set; }
+        public bool Processando { get; private set; }
 
         public async Task Executar(Func<CancellationToken, Task> tarefa)
         {
@@ -33,10 +35,10 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 
         private async void DefinirCarregando(bool valor, CancellationToken cancellationToken)
         {
-            carregando = valor;
-            if (carregando)
+            Processando = valor;
+            if (Processando)
                 await Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken);
-            DefinirMonstrarCarregamento();
+            await DefinirMonstrarCarregamento();
         }
 
         public void Cancelar()
@@ -49,10 +51,11 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
             cancellationTokenSource = null;
         }
 
-        private void DefinirMonstrarCarregamento()
+        private async Task DefinirMonstrarCarregamento()
         {
-            mostrarCarregando = carregando;
+            exibirCarregando = Processando;
             StateHasChanged();
+            await AoAtualizarValorDeProcessando.InvokeAsync(Processando);
         }
 
         public void Dispose()

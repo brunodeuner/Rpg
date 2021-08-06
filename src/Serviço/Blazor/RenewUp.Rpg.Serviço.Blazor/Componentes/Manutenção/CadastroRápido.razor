@@ -1,0 +1,10 @@
+﻿@using RenewUp.Rpg.Serviço.Blazor.Componentes.Botões
+@inherits ComponenteBase;
+@typeparam T;
+
+@if (Exibir)
+{
+    @ChildContent
+    <Botão @ref="@botãoDeCadastrar" TarefaDeAoClicar="@Cadastrar" AoAtualizarValorDeDesabilitado="@AoAtualizarValorDeDesabilitado">Cadastrar</Botão>
+    <Botão @ref="@botãoDeAcessarCadastro">Acessar cadastro</Botão>
+}

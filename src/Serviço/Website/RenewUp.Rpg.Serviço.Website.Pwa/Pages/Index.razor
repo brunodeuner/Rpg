@@ -5,20 +5,21 @@
 @using SkyInfo.Infra.Armazenamento.Abstracoes.Dao
 @using SkyInfo.Infra.Armazenamento.Abstracoes.Id
 
-<h1>Olá!</h1>
+<h1>Olá! 2</h1>
 
 <IndicadorDeCarregamento @ref="indicadorDeCarregamento">
     <EditForm Model=@teste>
         <InicializadorDoContexto IndicadorDeCarregamento="@indicadorDeCarregamento" />
         <Listagem T=Teste></Listagem>
-        <label>@teste.Id : @teste.Descricao</label>
+        <RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção.CadastroRápido T=Teste Exibir=true>
+            <label>@teste.Id : @teste.Descricao</label>
+        </RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção.CadastroRápido>
     </EditForm>
 </IndicadorDeCarregamento>
 
 @code {
     public IndicadorDeCarregamento indicadorDeCarregamento;
     private Teste teste;
-
 
     [Inject]
     public IDao Dao { get; set; }

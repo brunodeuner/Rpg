@@ -1,8 +1,0 @@
-﻿<button class="btn btn-primary" @onclick="@AoClicar">@ChildContent</button>
-
-@code {
-    [Parameter]
-    public EventCallback<MouseEventArgs> AoClicar { get; set; }
-    [Parameter]
-    public RenderFragment ChildContent { get; set; }
-}
