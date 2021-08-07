@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using RenewUp.Rpg.Serviço.Blazor.Componentes.Base;
 
 namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 {
@@ -10,12 +11,14 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
         private static readonly TimeSpan TempoParaAParecerOComponenteDeCarregando = TimeSpan.FromMilliseconds(150);
         private CancellationTokenSource cancellationTokenSource;
         private bool exibirCarregando;
+        private ObservadorDeValor<bool> processando;
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
         [Parameter]
-        public EventCallback<bool> AoAtualizarValorDeProcessando { get; set; }
-        public bool Processando { get; private set; }
+        public bool Processando { get => processando.Valor; set => processando.Valor = value; }
+        [Parameter]
+        public EventCallback<bool> ProcessandoChanged { get => processando.ValorChanged; set => processando.ValorChanged = value; }
 
         public async Task Executar(Func<CancellationToken, Task> tarefa)
         {
@@ -36,9 +39,9 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
         private async void DefinirCarregando(bool valor, CancellationToken cancellationToken)
         {
             Processando = valor;
-            if (Processando)
+            if (valor)
                 await Task.Delay(TempoParaAParecerOComponenteDeCarregando, cancellationToken);
-            await DefinirMonstrarCarregamento();
+            DefinirMonstrarCarregamento();
         }
 
         public void Cancelar()
@@ -51,11 +54,10 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
             cancellationTokenSource = null;
         }
 
-        private async Task DefinirMonstrarCarregamento()
+        private void DefinirMonstrarCarregamento()
         {
             exibirCarregando = Processando;
             StateHasChanged();
-            await AoAtualizarValorDeProcessando.InvokeAsync(Processando);
         }
 
         public void Dispose()

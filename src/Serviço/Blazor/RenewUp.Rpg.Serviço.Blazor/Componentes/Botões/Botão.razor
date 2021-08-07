@@ -1,12 +1,13 @@
 ﻿@using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 @using System.Threading
 
-<IndicadorDeCarregamento @ref="@indicadorDeCarregamento" AoAtualizarValorDeProcessando="@AoAtualizarValorDeProcessando">
-    <button @onclick="@AoClicarInterno" hidden="@Desabilitado">@ChildContent</button>
+<IndicadorDeCarregamento @ref="@indicadorDeCarregamento" @bind-Processando="@Desabilitado">
+    <button @onclick="@AoClicarInterno" disabled="@Desabilitado">@ChildContent</button>
 </IndicadorDeCarregamento>
 
 @code {
     private IndicadorDeCarregamento indicadorDeCarregamento;
+    private ObservadorDeValor<bool> desabilitado;
 
     [Parameter]
     public Action AoClicar { get; set; }
@@ -15,20 +16,10 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; }
     [Parameter]
-    public bool Desabilitado { get; set; }
+    public bool Desabilitado { get => desabilitado.Valor; set => desabilitado.Valor = value; }
     [Parameter]
-    public EventCallback<bool> AoAtualizarValorDeDesabilitado { get; set; }
+    public EventCallback<bool> DesabilitadoChanged { get => desabilitado.ValorChanged; set => desabilitado.ValorChanged = value; }
 
-    public async void AtualizarValorDeDesabilitado(bool valor)
-    {
-        var valorAnterior = Desabilitado;
-        Desabilitado = valor;
-        if (valorAnterior != Desabilitado)
-        {
-            StateHasChanged();
-            await AoAtualizarValorDeDesabilitado.InvokeAsync(valor);
-        }
-    }
 
     private async void AoClicarInterno()
     {
@@ -41,6 +32,4 @@
         if (TarefaDeAoClicar is not null)
             await indicadorDeCarregamento.Executar(TarefaDeAoClicar);
     }
-
-    private void AoAtualizarValorDeProcessando(bool valor) => AtualizarValorDeDesabilitado(valor);
 }

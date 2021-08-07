@@ -2,7 +2,6 @@
 using RenewUp.Rpg.Dominio.Repositorios;
 using RenewUp.Rpg.Serviço.Blazor.Componentes.Base;
 using RenewUp.Rpg.Serviço.Blazor.Componentes.Base.Atributos;
-using RenewUp.Rpg.Serviço.Blazor.Componentes.Botões;
 using SkyInfo.Infra.Armazenamento.Abstracoes.Id;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,8 +11,7 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção
     public partial class CadastroRápido<T> : ComponenteBase
         where T : class, IId, new()
     {
-        private Botão botãoDeCadastrar;
-        private Botão botãoDeAcessarCadastro;
+        private bool botõesDesabilitados;
 
         [Inject]
         public RepositorioBase<T> Repositorio { get; set; }
@@ -25,11 +23,5 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção
 
         public Task Cadastrar(CancellationToken cancellationToken) =>
             Task.Delay(1000, cancellationToken);
-
-        public void AoAtualizarValorDeDesabilitado(bool valor)
-        {
-            botãoDeAcessarCadastro.AtualizarValorDeDesabilitado(valor);
-            botãoDeCadastrar.AtualizarValorDeDesabilitado(valor);
-        }
     }
 }

@@ -5,6 +5,6 @@
 @if (Exibir)
 {
     @ChildContent
-    <Botão @ref="@botãoDeCadastrar" TarefaDeAoClicar="@Cadastrar" AoAtualizarValorDeDesabilitado="@AoAtualizarValorDeDesabilitado">Cadastrar</Botão>
-    <Botão @ref="@botãoDeAcessarCadastro">Acessar cadastro</Botão>
+    <Botão @bind-Desabilitado="@botõesDesabilitados" TarefaDeAoClicar="@Cadastrar">Cadastrar</Botão>
+    <Botão @bind-Desabilitado="@botõesDesabilitados">Acessar cadastro</Botão>
 }
