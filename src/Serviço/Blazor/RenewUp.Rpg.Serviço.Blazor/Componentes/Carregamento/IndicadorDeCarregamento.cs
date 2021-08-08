@@ -9,22 +9,35 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
     public partial class IndicadorDeCarregamento : ComponentBase, IDisposable
     {
         private static readonly TimeSpan TempoParaAParecerOComponenteDeCarregando = TimeSpan.FromMilliseconds(150);
-        private CancellationTokenSource cancellationTokenSource;
         private bool exibirCarregando;
         private ObservadorDeValor<bool> processando;
+        private ObservadorDeValor<CancellationTokenSource> cancellationTokenSource;
 
         [Parameter]
         public RenderFragment ChildContent { get; set; }
         [Parameter]
         public bool Processando { get => processando.Valor; set => processando.Valor = value; }
         [Parameter]
-        public EventCallback<bool> ProcessandoChanged { get => processando.ValorChanged; set => processando.ValorChanged = value; }
+        public EventCallback<bool> ProcessandoChanged
+        {
+            get => processando.ValorChanged; set => processando.ValorChanged = value;
+        }
+        [Parameter]
+        public CancellationTokenSource CancellationTokenSource
+        {
+            get => cancellationTokenSource.Valor; set => cancellationTokenSource.Valor = value;
+        }
+        [Parameter]
+        public EventCallback<CancellationTokenSource> CancellationTokenSourceChanged
+        {
+            get => cancellationTokenSource.ValorChanged; set => cancellationTokenSource.ValorChanged = value;
+        }
 
         public async Task Executar(Func<CancellationToken, Task> tarefa)
         {
             Cancelar();
-            cancellationTokenSource ??= new();
-            var cancellationToken = cancellationTokenSource.Token;
+            CancellationTokenSource = new();
+            var cancellationToken = CancellationTokenSource.Token;
             DefinirCarregando(true, cancellationToken);
             try
             {
@@ -46,12 +59,12 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 
         public void Cancelar()
         {
-            if (cancellationTokenSource is null)
+            if (CancellationTokenSource is null)
                 return;
 
-            cancellationTokenSource.Cancel();
-            cancellationTokenSource.Dispose();
-            cancellationTokenSource = null;
+            CancellationTokenSource.Cancel();
+            CancellationTokenSource.Dispose();
+            CancellationTokenSource = null;
         }
 
         private void DefinirMonstrarCarregamento()

@@ -12,6 +12,7 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção
         where T : class, IId, new()
     {
         private bool botõesDesabilitados;
+        private CancellationTokenSource cancellationTokenSourceDoBotãoDeCadastrar;
 
         [Inject]
         public RepositorioBase<T> Repositorio { get; set; }
@@ -22,6 +23,8 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Manutenção
         public bool Exibir { get; set; }
 
         public Task Cadastrar(CancellationToken cancellationToken) =>
-            Task.Delay(1000, cancellationToken);
+            Task.Delay(5000, cancellationToken);
+
+        public void Cancelar() => cancellationTokenSourceDoBotãoDeCadastrar?.Cancel();
     }
 }

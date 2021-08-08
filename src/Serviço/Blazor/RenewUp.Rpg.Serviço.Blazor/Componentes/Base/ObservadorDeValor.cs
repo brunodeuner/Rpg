@@ -13,7 +13,14 @@ namespace RenewUp.Rpg.Serviço.Blazor.Componentes.Base
             {
                 var valorAnterior = valor;
                 valor = value;
-                if (!valor.Equals(valorAnterior))
+
+                if (valor is null && valorAnterior is not null)
+                {
+                    NotificarAoAlterarValor();
+                    return;
+                }
+
+                if (valor is not null && !valor.Equals(valorAnterior))
                     NotificarAoAlterarValor();
             }
         }

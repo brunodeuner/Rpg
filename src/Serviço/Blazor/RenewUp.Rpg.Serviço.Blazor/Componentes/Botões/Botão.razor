@@ -1,13 +1,15 @@
 ﻿@using RenewUp.Rpg.Serviço.Blazor.Componentes.Carregamento
 @using System.Threading
 
-<IndicadorDeCarregamento @ref="@indicadorDeCarregamento" @bind-Processando="@Desabilitado">
+<IndicadorDeCarregamento @ref="@indicadorDeCarregamento" @bind-Processando="@Desabilitado"
+                         @bind-CancellationTokenSource="@CancellationTokenSource">
     <button @onclick="@AoClicarInterno" disabled="@Desabilitado">@ChildContent</button>
 </IndicadorDeCarregamento>
 
 @code {
     private IndicadorDeCarregamento indicadorDeCarregamento;
     private ObservadorDeValor<bool> desabilitado;
+    private ObservadorDeValor<CancellationTokenSource> cancellationTokenSource;
 
     [Parameter]
     public Action AoClicar { get; set; }
@@ -18,8 +20,20 @@
     [Parameter]
     public bool Desabilitado { get => desabilitado.Valor; set => desabilitado.Valor = value; }
     [Parameter]
-    public EventCallback<bool> DesabilitadoChanged { get => desabilitado.ValorChanged; set => desabilitado.ValorChanged = value; }
-
+    public EventCallback<bool> DesabilitadoChanged
+    {
+        get => desabilitado.ValorChanged; set => desabilitado.ValorChanged = value;
+    }
+    [Parameter]
+    public CancellationTokenSource CancellationTokenSource
+    {
+        get => cancellationTokenSource.Valor; set => cancellationTokenSource.Valor = value;
+    }
+    [Parameter]
+    public EventCallback<CancellationTokenSource> CancellationTokenSourceChanged
+    {
+        get => cancellationTokenSource.ValorChanged; set => cancellationTokenSource.ValorChanged = value;
+    }
 
     private async void AoClicarInterno()
     {
