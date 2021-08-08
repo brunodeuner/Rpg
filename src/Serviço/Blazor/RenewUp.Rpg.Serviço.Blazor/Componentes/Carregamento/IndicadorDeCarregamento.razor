@@ -1,5 +1,8 @@
-﻿@if (exibirCarregando)
+﻿@using RenewUp.Rpg.Serviço.Blazor.Componentes.Botões
+
+@if (exibirCarregando)
 {
     <h3>IndicadorDeCarregamento</h3>
+    <Botão AoClicar="@Cancelar">Cancelar</Botão>
 }
 @ChildContent
